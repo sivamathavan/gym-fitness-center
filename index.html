@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Titan Fitness Studio | Best Gym & Transformation Center in Coimbatore</title>
+    <meta name="description" content="Coimbatore's premier fitness destination. State-of-the-art equipment, expert personal trainers, and transformation programs. Join Titan Fitness Studio today.">
+    <meta name="keywords" content="Gym in Coimbatore, Fitness Center Coimbatore, Personal Trainer Coimbatore, CrossFit Coimbatore, Weight Training Tamil Nadu, Transformation Gym Coimbatore">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        :root {
+            --black: #0A0A0A;
+            --black-light: #1A1A1A;
+            --red: #E30000;
+            --red-dark: #B30000;
+            --white: #FFFFFF;
+            --grey: #2A2A2A;
+            --text-muted: #A0A0A0;
+            --transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        /* --- Custom Cursor --- */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--red);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 10000;
+            transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .cursor-hover { width: 60px !important; height: 60px !important; background: rgba(227, 0, 0, 0.1); }
+
+        /* --- Stylish Skew --- */
+        .skewed {
+            transform: skewY(-3deg);
+            margin-top: -50px;
+            background: var(--black);
+        }
+
+        .skewed > * { transform: skewY(3deg); }
+
+        /* --- Scanline Effect --- */
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 5;
+            background: linear-gradient(0deg, rgba(227,0,0,0) 0%, rgba(227,0,0,0.1) 50%, rgba(227,0,0,0) 100%);
+            opacity: 0.1;
+            position: absolute;
+            bottom: 100%;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, .bold-heading {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 2px solid var(--red);
+        }
+
+        .logo {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-box {
+            background: var(--red);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            color: var(--white);
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 1.5px;
+        }
+
+        .logo-text span { color: var(--red); }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover { color: var(--red); }
+
+        .cta-btn {
+            background: var(--red);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover { background: var(--white); color: var(--red); transform: scale(1.05); }
+
+        /* --- Hero --- */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 8%;
+        }
+
+        .hero-content { max-width: 1000px; position: relative; z-index: 10; }
+        .hero-content h1 { 
+            font-size: 82.08px; 
+            font-weight: 800; 
+            line-height: 72.2304px; 
+            letter-spacing: -0.025em; 
+            margin-bottom: 1.5rem; 
+            text-shadow: 10px 10px 0 rgba(227,0,0,0.3);
+        }
+        .hero-content p { 
+            font-size: 18px; 
+            font-weight: 300; 
+            line-height: 28px; 
+            color: var(--text-muted); 
+            margin-bottom: 3rem; 
+            max-width: 700px; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+
+        /* --- Stats Strip --- */
+        .stats-strip {
+            background: var(--red);
+            padding: 3rem 8%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item h2 { font-size: 2.5rem; font-family: 'Oswald', sans-serif; line-height: 1; }
+        .stat-item p { text-transform: uppercase; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; }
+
+        /* --- Sections --- */
+        section { padding: 8rem 8%; }
+        .section-title { text-align: center; margin-bottom: 5rem; }
+        .section-title h2 { font-size: 3.5rem; margin-bottom: 1rem; }
+        .section-title .line { width: 80px; height: 5px; background: var(--red); margin: 0 auto; }
+
+        /* --- Program Grid --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .card {
+            background: var(--black-light);
+            border: 1px solid var(--grey);
+            transition: var(--transition);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card:hover { border-color: var(--red); transform: translateY(-10px); }
+        .card-img { height: 280px; overflow: hidden; position: relative; }
+        .card-img img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); opacity: 0.7; }
+        .card:hover .card-img img { transform: scale(1.1); opacity: 0.9; }
+        
+        .card-info { padding: 2.5rem; }
+        .card-info h3 { margin-bottom: 1rem; font-size: 1.8rem; color: var(--white); }
+        .card-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 2rem; }
+
+        /* --- Memberships --- */
+        .membership-card {
+            background: var(--grey);
+            padding: 4rem 3rem;
+            text-align: center;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .membership-card.featured { background: var(--black-light); border: 2px solid var(--red); transform: scale(1.05); }
+        .membership-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--white); }
+        .membership-card .price { font-size: 3rem; font-family: 'Oswald', sans-serif; color: var(--red); margin-bottom: 2rem; }
+        .membership-card ul { list-style: none; margin-bottom: 3rem; }
+        .membership-card ul li { margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95rem; }
+
+        /* --- WhatsApp Float --- */
+        .wa-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: #25D366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 10000;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .wa-float:hover { transform: scale(1.1) rotate(10deg); }
+
+        /* --- Trainers --- */
+        .trainer-card { text-align: center; }
+        .trainer-img { width: 220px; height: 220px; border-radius: 50%; margin: 0 auto 2rem; overflow: hidden; border: 4px solid var(--red); }
+        .trainer-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--black-light);
+            padding: 8rem 8% 2rem;
+            border-top: 1px solid var(--grey);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 4rem;
+            margin-bottom: 5rem;
+        }
+
+        .footer-col h4 { color: var(--red); margin-bottom: 2rem; letter-spacing: 1px; font-size: 0.9rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 1rem; color: var(--text-muted); font-size: 0.9rem; }
+        .footer-col ul li a { color: var(--text-muted); text-decoration: none; transition: var(--transition); }
+        .footer-col ul li a:hover { color: var(--red); }
+
+        /* --- Membership Glow --- */
+        .membership-card:hover {
+            box-shadow: 0 0 40px rgba(227, 0, 0, 0.3);
+            border-color: var(--red);
+        }
+
+        /* --- Scroll Reveal --- */
+        .reveal {
+            opacity: 0;
+            transform: scale(0.9) translateY(40px);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        /* --- Page Management --- */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        @media (max-width: 968px) {
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .membership-card.featured { transform: scale(1); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
+
+    <!-- WhatsApp -->
+    <a href="https://wa.me/919000000000" class="wa-float">
+        <i class="ph ph-whatsapp-logo"></i>
+    </a>
+
+    <!-- Nav -->
+    <nav>
+        <a href="#" class="logo" onclick="showPage('home')">
+            <div class="logo-box">T</div>
+            <div class="logo-text">TITAN<span>FITNESS</span></div>
+        </a>
+        <div class="nav-links">
+            <a href="#" onclick="showPage('home')">Home</a>
+            <a href="#" onclick="showPage('programs')">Training Programs</a>
+            <a href="#" onclick="showPage('membership')">Memberships</a>
+            <a href="#" onclick="showPage('gallery')">Gallery</a>
+            <a href="#" onclick="showPage('contact')">Contact</a>
+        </div>
+        <a href="#membership" class="cta-btn" onclick="showPage('membership')">Join Now</a>
+    </nav>
+
+    <!-- --- HOME PAGE --- -->
+    <main id="home-page" class="page active">
+        <header id="hero">
+            <div class="scanline"></div>
+            <div class="hero-content">
+                <h1 class="parallax" data-speed="2">Your Transformation Starts Here.</h1>
+                <p>Coimbatore's most advanced strength and conditioning center. High-energy environment, expert trainers, and a community built on grit.</p>
+                <div style="display: flex; gap: 1.5rem; justify-content: center;">
+                    <a href="#" class="cta-btn magnetic" style="padding: 1.2rem 3rem;" onclick="showPage('membership')">View Plans</a>
+                    <a href="https://wa.me/919000000000" class="cta-btn magnetic" style="background: transparent; border: 2px solid var(--white); padding: 1.2rem 3rem;">Free Trial Session</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="stats-strip reveal">
+            <div class="stat-item"><h2 class="counter" data-target="500">0</h2><p>Active Members</p></div>
+            <div class="stat-item"><h2 class="counter" data-target="10">0</h2><p>Certified Trainers</p></div>
+            <div class="stat-item"><h2 class="counter" data-target="5000">0</h2><p>Sq Ft Facility</p></div>
+            <div class="stat-item"><h2>6AM-10PM</h2><p>Working Hours</p></div>
+        </div>
+
+        <section id="programs-brief" class="reveal skewed">
+            <div class="skewed-content">
+                <div class="section-title">
+                    <h2>Elite Training Programs</h2>
+                    <div class="line"></div>
+                </div>
+                <div class="grid" id="home-programs-grid">
+                    <!-- 6 programs -->
+                </div>
+            </div>
+        </section>
+
+        <section id="transformations" style="background: var(--black-light);">
+            <div class="section-title">
+                <h2>The Proof is in the Progress</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid">
+                <div class="card" style="border: none;">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800" style="width:100%; height:400px; object-fit:cover;">
+                    <div style="padding: 2rem; text-align: center;"><h4>Weight Loss - 12KG</h4><p>Result in 3 Months</p></div>
+                </div>
+                <div class="card" style="border: none;">
+                    <img src="https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?q=80&w=800" style="width:100%; height:400px; object-fit:cover;">
+                    <div style="padding: 2rem; text-align: center;"><h4>Muscle Gain - 5KG</h4><p>Result in 6 Months</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="trainers">
+            <div class="section-title">
+                <h2>Expert Coaching</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid">
+                <div class="trainer-card">
+                    <div class="trainer-img"><img src="https://images.unsplash.com/photo-1567013127542-490d757e51fe?q=80&w=500" alt="Trainer"></div>
+                    <h3>Vikram S.</h3>
+                    <p style="color: var(--red);">Strength & Conditioning</p>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-img"><img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=500" alt="Trainer"></div>
+                    <h3>Priya R.</h3>
+                    <p style="color: var(--red);">Zumba & HIIT Expert</p>
+                </div>
+                <div class="trainer-card">
+                    <div class="trainer-img"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=500" alt="Trainer"></div>
+                    <h3>John Doe</h3>
+                    <p style="color: var(--red);">Powerlifting Pro</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- --- PROGRAMS PAGE --- -->
+    <main id="programs-page" class="page">
+        <section style="padding-top: 10rem;">
+            <div class="section-title">
+                <h2>Our Training Programs</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid" id="full-programs-grid">
+                <!-- Loaded via JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- --- MEMBERSHIP PAGE --- -->
+    <main id="membership-page" class="page">
+        <section style="padding-top: 10rem;">
+            <div class="section-title">
+                <h2>Choose Your Plan</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid">
+                <div class="membership-card">
+                    <h3>Basic Monthly</h3>
+                    <div class="price">₹1,500</div>
+                    <ul>
+                        <li>Gym Floor Access</li>
+                        <li>General Training</li>
+                        <li>Locker Facility</li>
+                        <li>Free Assessment</li>
+                    </ul>
+                    <a href="https://wa.me/919000000000?text=Join Monthly Plan" class="cta-btn" style="display:block;">Join Now</a>
+                </div>
+                <div class="membership-card featured">
+                    <h3>Most Popular (Quarterly)</h3>
+                    <div class="price">₹3,500</div>
+                    <ul>
+                        <li>Everything in Basic</li>
+                        <li>2 Group Classes/Week</li>
+                        <li>Diet Consultation</li>
+                        <li>Mobile App Access</li>
+                    </ul>
+                    <a href="https://wa.me/919000000000?text=Join Quarterly Plan" class="cta-btn" style="display:block;">Join Now</a>
+                </div>
+                <div class="membership-card">
+                    <h3>Annual Elite</h3>
+                    <div class="price">₹10,000</div>
+                    <ul>
+                        <li>Full Access 24/7</li>
+                        <li>Unlimited Group Classes</li>
+                        <li>PT Session (Monthly 1)</li>
+                        <li>Official Gym Merch</li>
+                    </ul>
+                    <a href="https://wa.me/919000000000?text=Join Annual Plan" class="cta-btn" style="display:block;">Join Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- --- GALLERY PAGE --- -->
+    <main id="gallery-page" class="page">
+        <section style="padding-top: 10rem;">
+            <div class="section-title">
+                <h2>Our Facility</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid" id="gallery-grid">
+                <!-- Gallery items load here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- --- CONTACT PAGE --- -->
+    <main id="contact-page" class="page">
+        <section style="padding-top: 10rem;">
+            <div class="section-title">
+                <h2>Get in Touch</h2>
+                <div class="line"></div>
+            </div>
+            <div class="grid" style="grid-template-columns: 1.2fr 0.8fr;">
+                <div style="background: var(--black-light); padding: 4rem; border: 1px solid var(--grey);">
+                    <h3>Book Free Trial</h3>
+                    <form style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                        <input type="text" placeholder="Name" style="padding: 1rem; background: transparent; border: 1px solid var(--grey); color: white; outline: none;">
+                        <input type="tel" placeholder="Mobile" style="padding: 1rem; background: transparent; border: 1px solid var(--grey); color: white; outline: none;">
+                        <select style="padding: 1rem; background: var(--black); border: 1px solid var(--grey); color: white; outline: none;">
+                            <option>Fitness Goal</option>
+                            <option>Weight Loss</option>
+                            <option>Muscle Gain</option>
+                            <option>General Fitness</option>
+                            <option>Competition Prep</option>
+                        </select>
+                        <button type="submit" class="cta-btn">Register for Trial</button>
+                    </form>
+                </div>
+                <div style="padding: 2rem;">
+                    <h4>Titan Fitness Studio</h4>
+                    <p style="margin-bottom: 2rem; color: var(--text-muted);">No. 22, Saravanampatti Road,<br>Coimbatore, Tamil Nadu 641035</p>
+                    
+                    <h4>Contact Info</h4>
+                    <p style="margin-bottom: 2rem; color: var(--text-muted);">+91 90000 00000<br>train@titanfitness.in</p>
+                    
+                    <a href="https://wa.me/919000000000" class="cta-btn" style="background: #25D366; display: block; text-align: center;">Direct WhatsApp Chat</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="logo-text">TITAN<span>FITNESS</span></div>
+                <p style="margin-top: 1.5rem;">The ultimate transformation hub in Coimbatore.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Programs</h4>
+                <ul>
+                    <li><a href="#" onclick="showPage('programs')">Strength Training</a></li>
+                    <li><a href="#" onclick="showPage('programs')">CrossFit</a></li>
+                    <li><a href="#" onclick="showPage('programs')">HIIT / Zumba</a></li>
+                    <li><a href="#" onclick="showPage('programs')">Personal Coaching</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('membership')">Memberships</a></li>
+                    <li><a href="#" onclick="showPage('gallery')">Facility Tour</a></li>
+                    <li><a href="#" onclick="showPage('contact')">Book Trial</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div style="display: flex; gap: 1.5rem; font-size: 1.5rem; margin-top: 1rem;">
+                    <i class="ph ph-instagram-logo"></i>
+                    <i class="ph ph-facebook-logo"></i>
+                    <i class="ph ph-youtube-logo"></i>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2026 Titan Fitness Coimbatore. Powered by Antigravity.
+        </div>
+    </footer>
+
+    <script>
+        const programs = [
+            { name: "Weight Training", desc: "Scientific hypertrophy and strength protocols.", img: "https://images.unsplash.com/photo-1581009146145-b5ef03a1930b?q=80&w=800" },
+            { name: "HIIT & Cardio", desc: "High-intensity metabolic conditioning sessions.", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800" },
+            { name: "Zumba Dance", desc: "Fun, high-energy group fitness classes.", img: "https://images.unsplash.com/photo-1524594152303-9fd13543fe6e?q=80&w=800" },
+            { name: "CrossFit Elite", desc: "Functional movements at high intensity.", img: "https://images.unsplash.com/photo-1533681905644-88241f30149a?q=80&w=800" },
+            { name: "Personal Training", desc: "1-on-1 coaching for accelerated results.", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800" },
+            { name: "Yoga & Mobility", desc: "Flexibility and mindful recovery sessions.", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800" }
+        ];
+
+        const gallery = [
+            "https://images.unsplash.com/photo-1534438327276-14e5300c3a48",
+            "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5",
+            "https://images.unsplash.com/photo-1517836357463-d25dfeac3438",
+            "https://images.unsplash.com/photo-1581009146145-b5ef03a1930b",
+            "https://images.unsplash.com/photo-1533681905644-88241f30149a",
+            "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b"
+        ];
+
+        function loadContent() {
+            const hGrid = document.getElementById('home-programs-grid');
+            const pGrid = document.getElementById('full-programs-grid');
+            const gGrid = document.getElementById('gallery-grid');
+            
+            const render = (arr) => arr.map(p => `
+                <div class="card">
+                    <div class="card-img"><img src="${p.img}" alt="${p.name}" onerror="this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48';"></div>
+                    <div class="card-info">
+                        <h3>${p.name}</h3>
+                        <p>${p.desc}</p>
+                        <a href="https://wa.me/919000000000?text=Inquiry for ${p.name}" class="cta-btn" style="display:block; text-align:center;">Join Program</a>
+                    </div>
+                </div>
+            `).join('');
+
+            if (hGrid) hGrid.innerHTML = render(programs.slice(0, 6));
+            if (pGrid) pGrid.innerHTML = render(programs);
+            if (gGrid) gGrid.innerHTML = gallery.map(img => `
+                <div class="card" style="height: 300px;">
+                    <img src="${img}?q=80&w=500&auto=format&fit=crop" style="width:100%; height:100%; object-fit:cover;">
+                </div>
+            `).join('');
+        }
+
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId + '-page').classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // --- Stats Counter Logic ---
+        function initCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const updateCount = () => {
+                    const count = +counter.innerText;
+                    const inc = target / 50;
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target + "+";
+                    }
+                };
+                
+                const observer = new IntersectionObserver((entries) => {
+                    if(entries[0].isIntersecting) {
+                        updateCount();
+                        observer.disconnect();
+                    }
+                });
+                observer.observe(counter);
+            });
+        }
+
+        // --- Reveal Logic ---
+        function initReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            reveals.forEach(r => observer.observe(r));
+        }
+
+        // --- Custom Cursor ---
+        function initCursor() {
+            const cursor = document.getElementById('cursor');
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+            const links = document.querySelectorAll('a, button, .card');
+            links.forEach(l => {
+                l.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+                l.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+            });
+        }
+
+        // --- Parallax ---
+        function initParallax() {
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const parallaxElems = document.querySelectorAll('.parallax');
+                parallaxElems.forEach(el => {
+                    const speed = el.getAttribute('data-speed');
+                    el.style.transform = `translateY(${scrolled * speed * 0.1}px)`;
+                });
+            });
+        }
+
+        // --- Magnetic ---
+        function initMagnetic() {
+            const magnetics = document.querySelectorAll('.magnetic');
+            magnetics.forEach(el => {
+                el.addEventListener('mousemove', (e) => {
+                    const rect = el.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    el.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+                });
+                el.addEventListener('mouseleave', () => el.style.transform = `translate(0, 0)`);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadContent();
+            initCounters();
+            initReveal();
+            initCursor();
+            initParallax();
+            initMagnetic();
+        });
+    </script>
+</body>
+</html>
